@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Prediction</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f2f2f2; /* Light gray background color */
+            animation: backgroundChange 20s linear infinite alternate; /* Background color animation */
+        }
+
+        h1 {
+            text-align: center;
+            padding: 20px 0;
+            background-color: #a51a60;
+            color: white;
+            margin: 0;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Add shadow to text */
+            animation: textShadow 5s infinite alternate; /* Text shadow animation */
+        }
+
+        .main-content {
+            background-color: #fff; /* White background color */
+            margin: 20px auto;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 500px;
+            animation: fadeIn 1s ease; /* Fade-in animation */
+        }
+
+        form {
+            text-align: center;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+            color: #a5521a; /* Dark blue color */
+        }
+
+        input[type="file"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            box-sizing: border-box;
+            border: 2px solid #a51a70; /* Dark blue border */
+            border-radius: 4px;
+            background-color: #f2f2f2; /* Light gray background color */
+            transition: border-color 0.3s ease; /* Smooth transition on hover */
+        }
+
+        input[type="file"]:hover {
+            border-color: #6a9de4; /* Darken border color on hover */
+        }
+
+        button {
+            background-color: #23bce3;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            width: 100%;
+            cursor: pointer;
+            border-radius: 4px;
+            font-size: 16px;
+            transition: background-color 0.3s ease; /* Smooth transition on hover */
+        }
+
+        button:hover {
+            background-color: #1937df; /* Darken background color on hover */
+        }
+
+        .error-message {
+            color: red;
+            text-align: center;
+            margin-top: 10px;
+            animation: shake 0.5s ease; /* Shake animation for error message */
+        }
+
+        /* Fade-in animation */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* Shake animation */
+        @keyframes shake {
+            0% {
+                transform: translateX(0);
+            }
+            25% {
+                transform: translateX(-5px);
+            }
+            50% {
+                transform: translateX(5px);
+            }
+            75% {
+                transform: translateX(-5px);
+            }
+            100% {
+                transform: translateX(0);
+            }
+        }
+
+        /* Background color animation */
+        @keyframes backgroundChange {
+            0% {
+                background-color: #f2f2f2;
+            }
+            50% {
+                background-color: #c5f2c7; /* Light green color */
+            }
+            100% {
+                background-color: #f2f2f2;
+            }
+        }
+
+        /* Text shadow animation */
+        @keyframes textShadow {
+            0% {
+                text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            }
+            50% {
+                text-shadow: 4px 4px 6px rgba(0, 0, 0, 0.7);
+            }
+            100% {
+                text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Image Prediction</h1>
+
+    <div class="main-content">
+        <form action="/predict_char" method="post" enctype="multipart/form-data">
+            <label for="file_char">Upload Image for Character Prediction:</label>
+            <input type="file" name="file" id="file_char" accept=".jpg, .jpeg, .png" required>
+            <button type="submit">Predict Character</button>
+        </form>
+
+        <form action="/predict_digit" method="post" enctype="multipart/form-data">
+            <label for="file_digit">Upload Image for Digit Prediction:</label>
+            <input type="file" name="file" id="file_digit" accept=".jpg, .jpeg, .png" required>
+            <button type="submit">Predict Digit</button>
+        </form>
+
+        <form action="/predict_group" method="post" enctype="multipart/form-data">
+            <label for="file_group">Upload Image for Group Prediction:</label>
+            <input type="file" name="file" id="file_group" accept=".jpg, .jpeg, .png" required>
+            <button type="submit">Predict Group</button>
+        </form>
+
+        <form action="/predict_traffic_sign" method="post" enctype="multipart/form-data">
+            <label for="file_traffic_sign">Upload Image for Traffic Sign Prediction:</label>
+            <input type="file" name="file" id="file_traffic_sign" accept=".jpg, .jpeg, .png" required>
+            <button type="submit">Predict Traffic Sign</button>
+        </form>
+
+        {% if error %}
+        <p class="error-message">Error: {{ error }}</p>
+        {% endif %}
+    </div>
+</body>
+
+</html>

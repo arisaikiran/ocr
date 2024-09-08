@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digit Prediction Result</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            text-align: center;
+        }
+        h1 {
+            color: #1a57a5;
+        }
+        .digit-image {
+            max-width: 100%;
+            height: auto;
+            margin-top: 20px;
+        }
+        .back-button {
+            margin-top: 20px;
+            background-color: #1a57a5;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Digit Prediction Result</h1>
+        {% for i in range(digit_count) %}
+        <h2>Predicted Output: {{ digit_prediction[i] }}</h2>
+        <img src="data:image/png;base64,{{ uploaded_digits[i] }}" class="digit-image" alt="Digit Image">
+        {% endfor %}
+    </div>
+    <button class="back-button" onclick="goBack()">Back</button>
+    <script>
+        function goBack() {
+            window.history.back();
+        }
+    </script>
+</body>
+</html>

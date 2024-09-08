@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Group Prediction Result</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            text-align: center;
+        }
+        h1 {
+            color: #1a57a5;
+        }
+        .character-image {
+            max-width: 100%;
+            height: auto;
+            margin-top: 20px;
+        }
+        .back-button {
+            margin-top: 20px;
+            background-color: #1a57a5;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Group Prediction Result</h1>
+        {% for i in range(group_count) %}
+        <h2>Predicted Output: {{ group_predictions[i] }}</h2>
+        <img src="data:image/png;base64,{{ group_uploaded_images[i] }}" class="character-image" alt="Character Image">
+        {% endfor %}
+    </div>
+    <button class="back-button" onclick="goBack()">Back</button>
+    <script>
+        function goBack() {
+            window.history.back();
+        }
+    </script>
+</body>
+</html>
