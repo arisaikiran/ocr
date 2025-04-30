@@ -1,4 +1,4 @@
-# ocr
+# OPTICAL CHARACTER RECOGNITION USING CNN
 This project implements an Optical Character Recognition (OCR) system using Convolutional Neural Networks (CNNs) to recognize characters and digits (A-Z, 0-9) from images. The system is optimized using backpropagation for training the neural network, providing high accuracy in recognizing textual data.
 
 Technologies Used:
